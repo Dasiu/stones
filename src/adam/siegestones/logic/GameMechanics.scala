@@ -1,4 +1,7 @@
-package adam.siegestones.models
+package adam.siegestones.logic
+
+import adam.siegestones.models.Player
+import adam.siegestones.models.Stone
 
 class GameMechanics(
 		private var currentPlayer: Player,
