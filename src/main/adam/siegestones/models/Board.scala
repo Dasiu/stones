@@ -1,5 +1,3 @@
 package adam.siegestones.models
 
-class Board {
-
-}
+class Board extends GenericBoard[Piece] {}
