@@ -1,5 +1,5 @@
 package adam.siegestones.models
 
-class Tower extends Piece {
+class Tower extends Piece(null) {
 
 }
