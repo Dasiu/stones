@@ -8,8 +8,11 @@ import javafx.scene.Scene
 import javafx.scene.layout.AnchorPane
 import javafx.stage.Stage
 import javafx.scene.control.Label
-
 import adam.siegestones.controllers._
+import adam.siegestones.logic.Logic
+import adam.siegestones.models.Player
+import adam.siegestones.models.Board
+import javafx.scene.image.Image
 
 class AppContext extends Application {
 
@@ -17,22 +20,23 @@ class AppContext extends Application {
   private val MINIMUM_WINDOW_HEIGHT = 400
   private var stage: Stage = null
 
+  private val logic = new Logic(new Board,
+    Array(new Player(AppContext.redStoneImg, AppContext.redTowerImg),
+      new Player(AppContext.blueStoneImg, AppContext.blueTowerImg)))
+
   override def start(s: Stage) {
-//    val root = new AnchorPane
-//    root.getChildren.add(new Label("Hello world!"))
-//
-//    s.setScene(new Scene(root, 300, 300))
-//    s.show()
-        stage = s
-        stage.setTitle("SiegeStones")
-        stage.setMinWidth(MINIMUM_WINDOW_WIDTH)
-        stage.setMinHeight(MINIMUM_WINDOW_HEIGHT)
-        showStart()
-        stage.show()
+    stage = s
+    stage.setTitle("SiegeStones")
+    stage.setMinWidth(MINIMUM_WINDOW_WIDTH)
+    stage.setMinHeight(MINIMUM_WINDOW_HEIGHT)
+    showStart()
+    stage.show()
   }
 
   private def showStart() {
-    val start = replaceSceneContent("../../resources/Menu.fxml")
+    val start = replaceSceneContent("/resources/Board.fxml")
+    start.setLogic(logic)
+
     stage.minHeightProperty.set(400)
     stage.minWidthProperty.set(400)
   }
@@ -40,7 +44,6 @@ class AppContext extends Application {
   private def replaceSceneContent(fxml: String) = {
     val loader = new FXMLLoader
     val appContextClass = classOf[AppContext]
-    //    val appContextClass = AppContext.getClass.asInstanceOf[Class[AppContext]]
     val in = appContextClass.getResourceAsStream(fxml)
     loader.setBuilderFactory(new JavaFXBuilderFactory)
     loader.setLocation(appContextClass.getResource(fxml))
@@ -57,6 +60,13 @@ class AppContext extends Application {
 }
 
 object AppContext {
+  val redStoneImg = new Image("/resources/img/red-stone.png")
+  val blueStoneImg = new Image("/resources/img/blue-stone.png")
+  val redTowerImg = new Image("/resources/img/red-tower.png")
+  val blueTowerImg = new Image("/resources/img/blue-tower.png")
+  val neutralTowerImg = new Image("/resources/img/neutral-tower.png")
+  val neutralStoneImg = new Image("/resources/img/neutral-stone.png")
+
   def main(args: Array[String]) {
     val appContextClass = classOf[AppContext]
     Application.launch(appContextClass, args: _*);

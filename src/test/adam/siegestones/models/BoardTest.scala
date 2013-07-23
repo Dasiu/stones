@@ -148,4 +148,27 @@ class BoardTest {
     assertEquals((-1, -1), pieceBoard coordinatesOf tower2)
   }
 
+  @Test
+  def toListStandardCase {
+    val pieceBoard = new Board
+    val stone1 = mock(classOf[Stone])
+    val stone2 = mock(classOf[Stone])
+    val tower = mock(classOf[Tower])
+
+    pieceBoard set ((6, 3), stone1)
+    pieceBoard set ((0, 3), stone2)
+    pieceBoard set ((1, 5), tower)
+
+    val actualList = pieceBoard.toList
+      assertEquals(Set(stone1, stone2, tower), actualList.toSet)
+  }
+
+  @Test
+  def toListEmptyBoard {
+    val pieceBoard = new Board
+
+    val actualList = pieceBoard.toList
+      assertEquals(Set[Piece](), actualList.toSet)
+  }
+
 }

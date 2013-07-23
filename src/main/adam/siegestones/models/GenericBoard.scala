@@ -66,6 +66,8 @@ class GenericBoard[T] {
   private def normalizedCoordinates(p: (Int, Int)) = processCoordinates(p)(_ - _)
   
   private def unnormalizedCoordinates(p: (Int, Int)) = processCoordinates(p)(_ + _)
+  
+  def toList: List[T] = array.reduce(_ ++ _).toList.filter(_ != null).asInstanceOf[List[T]]
 }
 
 object GenericBoard {

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="560.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml" fx:controller="BoardController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <GridPane fx:id="boardGridPane" vgap="2.0">
+      <children>
+        <Button id="fieldButton" fx:id="field01" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="0" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field03" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" textOverrun="CLIP" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field05" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field07" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field09" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="8" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field011" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="10" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field013" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field12" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm12" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm23" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field23" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm14" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm34" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field14" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field34" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm25" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field25" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm36" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm16" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm27" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm38" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm29" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="8" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm18" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field16" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field18" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field27" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field36" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field38" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field29" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="8" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm110" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="9" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field110" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="9" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field310" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="9" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm211" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm112" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="11" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field211" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="10" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="field112" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="11" GridPane.rowSpan="2" />
+        <Button id="fieldButton" fx:id="fieldm310" mnemonicParsing="false" onAction="#onFieldButtonAction" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="9" GridPane.rowSpan="2" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="40.0" />
+      </columnConstraints>
+      <padding>
+        <Insets left="10.0" right="10.0" />
+      </padding>
+      <rowConstraints>
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <VBox layoutX="586.0" layoutY="120.0" prefHeight="200.0" prefWidth="100.0">
+      <children>
+        <GridPane alignment="CENTER" hgap="5.0" vgap="5.0" VBox.margin="$x1">
+          <children>
+            <Button fx:id="checkStoneButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#useStoneInNextMoves" text="Kamień" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="1" />
+            <ImageView fx:id="actualPieceImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" GridPane.rowSpan="2" />
+            <Button fx:id="checkTowerButton" mnemonicParsing="false" onAction="#useTowerInNextMoves" text="Wieża" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </children>
+    </VBox>
+    <Button fx:id="menuButton" layoutX="596.0" layoutY="352.0" mnemonicParsing="false" onAction="#onMenuButtonAction" text="Menu" />
+    <Label layoutX="596.0" layoutY="62.0" opacity="0.0" text="Aktualny Gracz:" />
+    <Label fx:id="actualPlayerLabel" layoutX="596.0" layoutY="87.0" opacity="0.0" text="A" />
+    <Button fx:id="aiNextMoveButton" layoutX="596.0" layoutY="312.0" mnemonicParsing="false" onAction="#aiNextMoveButton" text="Ruch" />
+  </children>
+  <stylesheets>
+    <URL value="@css/board.css" />
+  </stylesheets>
+</AnchorPane>

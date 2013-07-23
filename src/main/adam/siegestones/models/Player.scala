@@ -1,11 +1,19 @@
 package adam.siegestones.models
 
+import javafx.scene.image.Image
+
 class Player(
   private var stonesNum: Int,
-  private var towersNum: Int) {
+  private var towersNum: Int,
+  private val stoneImage: Image,
+  private val towerImage: Image) {
 
   def this() {
-    this(Player.DEFAULT_STONES_NUM, Player.DEFAULT_TOWERS_NUM)
+    this(Player.DEFAULT_STONES_NUM, Player.DEFAULT_TOWERS_NUM, null, null)
+  }
+  
+  def this(sImage: Image, tImage: Image) {
+    this(Player.DEFAULT_STONES_NUM, Player.DEFAULT_TOWERS_NUM, sImage, tImage)
   }
 
   def getStonesNum = stonesNum
@@ -13,11 +21,9 @@ class Player(
 
   def decrementStones { stonesNum }
   def decrementTowers { towersNum }
-  
-  override def equals(that: Any) = that match {
-    case player: Player => stonesNum == player.getStonesNum && towersNum == player.getTowersNum
-    case _ => false
-  }
+
+  def getStoneImage = stoneImage
+  def getTowerImage = towerImage
 }
 
 object Player {

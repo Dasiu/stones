@@ -31,7 +31,9 @@ class Logic(
       val stones = board neighbourStones (board coordinatesOf (t))
       val playersWithItsPowersInNeighbourhood: Array[(Player, Int)] =
         players.map(pl => (pl, stones.foldLeft(0)(
-          (sum, s) => if (s.getOwner == pl) sum + s.getPower else sum)))
+          (sum, s) => 
+            if (s.getOwner == pl) sum + s.getPower 
+            else sum)))
       val maxPower = playersWithItsPowersInNeighbourhood map (_._2) max
       val playersWithMaxPower = playersWithItsPowersInNeighbourhood filter (_._2 == maxPower)
       val possibleOwners = playersWithMaxPower filter (_._2 > Logic.TOWER_TAKEOVER_LIMIT) map (_._1)
@@ -63,6 +65,8 @@ class Logic(
   }
 
   def getCurrentPlayer = players(currPlayerIdx)
+  
+  def getBoard = board
 }
 
 object Logic {
