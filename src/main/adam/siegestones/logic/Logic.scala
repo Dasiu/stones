@@ -24,7 +24,7 @@ class Logic(
   }
 
   /**
-   * In this implementation setOwner in tower can be called once or more
+   * In this implementation setOwner in tower can be called more than once
    */
   private def actualiseBoard(p: (Int, Int), piece: Piece) {
     def evaluateOwner(t: Tower) = {
