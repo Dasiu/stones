@@ -35,7 +35,7 @@ class BoardController extends Controller with Initializable {
         val gridColumn = GridPane.getColumnIndex(firedButton)
         val (boardRow, boardColumn) = toBoardCoordinates((gridRow, gridColumn))
 
-        logic makeMove ((boardRow, boardColumn), createNewPiece())
+        gameController makeMove ((boardRow, boardColumn), createNewPiece())
 
         drawBoard()
     }
@@ -62,7 +62,7 @@ class BoardController extends Controller with Initializable {
           val gridRow = GridPane.getRowIndex(button)
           val gridColumn = GridPane.getColumnIndex(button)
           val boardCoord = toBoardCoordinates((gridRow, gridColumn))
-          logic.getBoard get boardCoord match {
+          (gameController getBoard) get boardCoord match {
             case tower: Tower =>
               val owner = tower.getOwner
               val imageView = if (owner != null) owner.getTowerImage else AppContext.neutralTowerImg
@@ -83,7 +83,7 @@ class BoardController extends Controller with Initializable {
   }
 
   private def createNewPiece(): Piece = typeOfNewPiece match {
-    case _: Stone => new Stone(logic.getCurrentPlayer)
+    case _: Stone => new Stone(gameController getCurrentPlayer)
     case _: Tower => new Tower
   }
 }

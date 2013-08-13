@@ -1,18 +1,21 @@
 package adam.siegestones
 
+import java.util.Random
+import adam.siegestones.controllers._
+import adam.siegestones.logic.GameController
+import adam.siegestones.logic.Logic
+import adam.siegestones.models.AIPlayer
+import adam.siegestones.models.Board
+import adam.siegestones.models.Player
+import adam.siegestones.models.RandomAIPlayer
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
-import javafx.fxml.Initializable
 import javafx.fxml.JavaFXBuilderFactory
 import javafx.scene.Scene
+import javafx.scene.image.Image
 import javafx.scene.layout.AnchorPane
 import javafx.stage.Stage
-import javafx.scene.control.Label
-import adam.siegestones.controllers._
-import adam.siegestones.logic.Logic
-import adam.siegestones.models.Player
-import adam.siegestones.models.Board
-import javafx.scene.image.Image
+import adam.siegestones.models.RealPlayer
 
 class AppContext extends Application {
   override def start(s: Stage) {
@@ -32,11 +35,21 @@ object AppContext {
   private val MINIMUM_WINDOW_HEIGHT = 400
   private var stage: Stage = null
 
-  private val logic = new Logic(new Board,
-    Array(new Player(AppContext.redStoneImg, AppContext.redTowerImg),
-      new Player(AppContext.blueStoneImg, AppContext.blueTowerImg)))
+  private val logic = new Logic(new Board)
+  private val gameController = new GameController(logic)
 
   def init(s: Stage) {
+    val player = new RealPlayer
+    player.setStoneImage(AppContext.redStoneImg)
+    player.setTowerImage(AppContext.redTowerImg)
+    
+    val aiPlayer = new RandomAIPlayer(logic, new Random())
+    aiPlayer.setStoneImage(AppContext.blueStoneImg)
+    aiPlayer.setTowerImage(AppContext.blueTowerImg)
+    
+    val players = Array(player, aiPlayer)
+    logic.setPlayers(players)
+
     stage = s
     stage.setTitle("Stones")
     stage.setMinWidth(MINIMUM_WINDOW_WIDTH)
@@ -46,12 +59,12 @@ object AppContext {
   }
 
   private def changeView(fxml: String) {
-	  val controller = replaceSceneContent(fxml)
-	  controller.setLogic(logic)
+    val controller = replaceSceneContent(fxml)
+    controller.setGameController(gameController)
   }
-  
+
   def showMenuView() { changeView("/resources/Menu.fxml") }
-  
+
   def showBoardView() { changeView("/resources/Board.fxml") }
 
   private def replaceSceneContent(fxml: String) = {

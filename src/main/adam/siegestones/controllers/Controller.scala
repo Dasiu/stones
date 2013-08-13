@@ -1,12 +1,12 @@
 package adam.siegestones.controllers
 
 import adam.siegestones.logic.Logic
+import adam.siegestones.logic.GameController
 
 abstract class Controller {
-
-  protected var logic: Logic = null
+  protected var gameController: GameController = null
   
-  def setLogic(l: Logic) {
-    logic = l
+  def setGameController(gc: GameController) {
+    gameController = gc
   }
 }

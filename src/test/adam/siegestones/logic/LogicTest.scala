@@ -28,7 +28,8 @@ class LogicTest {
 
     board = mock(classOf[Board])
 
-    logic = new Logic(board, Array(player1, player2))
+    logic = new Logic(board)
+    logic.setPlayers(Array(player1, player2))
   }
 
   @Test
@@ -195,5 +196,10 @@ class LogicTest {
     verify(tower, atLeastOnce()).setOwner(null)
     verify(stone1).decrementPower
     verify(stone2).decrementPower
+  }
+
+  @Test
+  def isGameOver {
+    fail("not implemented")
   }
 }

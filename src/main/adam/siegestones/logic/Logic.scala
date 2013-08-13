@@ -7,8 +7,8 @@ import adam.siegestones.models.Board
 import adam.siegestones.models.Tower
 
 class Logic(
-  private val board: Board,
-  private val players: Array[Player]) {
+  private val board: Board) {
+  private var players = Array[Player]()
   private var currPlayerIdx = 0
 
   def makeMove(p: (Int, Int), piece: Piece) {
@@ -63,10 +63,17 @@ class Logic(
     }
     isPieceLeft && (board isOnBoard p) && board.get(p) == null
   }
+  
+  def isGameOver(): Boolean = {
+    //throw new UnsupportedOperationException
+    false
+  }
 
   def getCurrentPlayer = players(currPlayerIdx)
   
   def getBoard = board
+  
+  def setPlayers(pls: Array[Player]) { players = pls }
 }
 
 object Logic {
