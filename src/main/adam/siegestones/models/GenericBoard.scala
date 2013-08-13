@@ -47,11 +47,11 @@ class GenericBoard[T] {
   /**
    * arg p: standard(unnormalized) coordinates
    */
-  private def isOnBoard(p: (Int, Int)) = p._1 match {
+  def isOnBoard(p: (Int, Int)) = p._1 match {
     case 0 => (2 to 4 toSet) contains p._2
     case 1 | 2 | 3 | 4 => (0 to 6 toSet) contains p._2
     case 5 => (1 to 5 toSet) contains p._2
-    case 6 => 6 == p._2
+    case 6 => p._2 == 3
     case x => false
   }
 

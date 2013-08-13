@@ -33,18 +33,16 @@ class LogicTest {
 
   @Test
   def areMovesLegal {
-    val move1 = (0, 3)
-    val move2 = (3, 3)
-    val move3 = (4, 6)
-
     when(player1.getStonesNum).thenReturn(5)
     when(player1.getTowersNum).thenReturn(5)
 
     when(board.get(any(classOf[(Int, Int)]))).thenReturn(null)
+    when(board.isOnBoard(anyObject())).thenCallRealMethod()
 
-    assertTrue(logic.isMoveLegal(move1, new Stone(player1)))
-    assertTrue(logic.isMoveLegal(move2, new Stone(player1)))
-    assertTrue(logic.isMoveLegal(move3, new Tower))
+    assertTrue(logic.isMoveLegal((0, 3), new Stone(player1)))
+    assertTrue(logic.isMoveLegal((3, 3), new Stone(player1)))
+    assertTrue(logic.isMoveLegal((4, 6), new Tower))
+    assertTrue(logic.isMoveLegal((6, 3), new Tower))
   }
 
   @Test
@@ -52,14 +50,17 @@ class LogicTest {
     val move1 = (0, 2)
     val move2 = (3, 1)
     val move3 = (5, 5)
-    val move4 = (0, 3)
-    val move5 = (3, 3)
-    val move6 = (4, 6)
 
-    when(player1.getStonesNum).thenReturn(2).thenReturn(1).thenReturn(0)
-    when(player1.getTowersNum).thenReturn(1).thenReturn(0)
-
+    when(player1.getStonesNum).thenReturn(0)
+    when(player1.getTowersNum).thenReturn(0)
     when(board get any(classOf[(Int, Int)])).thenReturn(null)
+
+    assertFalse("Stones left out", logic.isMoveLegal((0, 3), new Stone(player1)))
+    assertFalse("Stones left out", logic.isMoveLegal((3, 3), new Stone(player1)))
+    assertFalse("Towers left out", logic.isMoveLegal((4, 6), new Tower))
+
+    when(player1.getStonesNum).thenReturn(1)
+    when(player1.getTowersNum).thenReturn(1)
     when(board get move1).thenReturn(new Stone(player1))
     when(board get move2).thenReturn(new Stone(player1))
     when(board get move3).thenReturn(new Tower)
@@ -67,9 +68,11 @@ class LogicTest {
     assertFalse("Field occupied 1", logic.isMoveLegal(move1, new Stone(player1)))
     assertFalse("Field occupied 2", logic.isMoveLegal(move2, new Stone(player1)))
     assertFalse("Field occupied 3", logic.isMoveLegal(move3, new Tower))
-    assertFalse("Stones left out", logic.isMoveLegal(move4, new Stone(player1)))
-    assertFalse("Stones left out", logic.isMoveLegal(move5, new Stone(player1)))
-    assertFalse("Towers left out", logic.isMoveLegal(move6, new Tower))
+    assertFalse("Move outside board 1", logic.isMoveLegal((5, 0), new Tower))
+    assertFalse("Move outside board 2", logic.isMoveLegal((6, 0), new Tower))
+
+    when(player1.getTowersNum).thenReturn(0)
+
     assertFalse("Field occupied and towers left out", logic.isMoveLegal(move3, new Tower))
   }
 
@@ -83,6 +86,8 @@ class LogicTest {
     when(board neighbourStones any(classOf[(Int, Int)])).thenCallRealMethod()
     when(board neighbours any(classOf[(Int, Int)])).thenCallRealMethod()
     when(board neighbourTowers any(classOf[(Int, Int)])).thenCallRealMethod()
+
+    when(board.isOnBoard(anyObject())).thenCallRealMethod()
 
     logic.makeMove(move, stone)
 
@@ -108,6 +113,8 @@ class LogicTest {
     when(board coordinatesOf tower).thenReturn(move)
     when(board coordinatesOf stone1).thenReturn(coord1)
 
+    when(board.isOnBoard(anyObject())).thenCallRealMethod()
+
     logic.makeMove(move, tower)
     verify(tower, atLeastOnce()).setOwner(player1)
     verify(stone1).decrementPower
@@ -125,6 +132,8 @@ class LogicTest {
     when(board neighbourTowers move).thenReturn(Set(tower))
     when(board coordinatesOf tower).thenReturn(coord)
     when(board coordinatesOf stone).thenReturn(move)
+
+    when(board.isOnBoard(anyObject())).thenCallRealMethod()
 
     logic.makeMove(move, stone)
     verify(tower, atLeastOnce()).setOwner(player1)
@@ -152,6 +161,8 @@ class LogicTest {
     when(board coordinatesOf stone1).thenReturn(coord1)
     when(board coordinatesOf stone2).thenReturn(coord2)
 
+    when(board.isOnBoard(anyObject())).thenCallRealMethod()
+
     logic.makeMove(move, tower1)
 
     verify(tower2, atLeastOnce()).setOwner(null)
@@ -177,6 +188,8 @@ class LogicTest {
     when(board coordinatesOf tower).thenReturn(move)
     when(board coordinatesOf stone1).thenReturn(coord1)
     when(board coordinatesOf stone2).thenReturn(coord2)
+
+    when(board.isOnBoard(anyObject())).thenCallRealMethod()
 
     logic.makeMove(move, tower)
     verify(tower, atLeastOnce()).setOwner(null)

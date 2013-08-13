@@ -61,7 +61,7 @@ class Logic(
       case _: Stone => players(currPlayerIdx).getStonesNum > 0
       case _: Tower => players(currPlayerIdx).getTowersNum > 0
     }
-    isPieceLeft && board.get(p) == null
+    isPieceLeft && (board isOnBoard p) && board.get(p) == null
   }
 
   def getCurrentPlayer = players(currPlayerIdx)

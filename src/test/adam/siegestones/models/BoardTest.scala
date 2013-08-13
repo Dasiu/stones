@@ -31,28 +31,28 @@ class BoardTest {
   def setOutsideBoard {
     try {
       board set ((0, 1), 10)
-      fail("Exception has not thrown")
+      fail("Exception is not thrown")
     } catch {
       case e: IndexOutOfBoundsException => // success
     }
 
     try {
       board set ((5, 0), 11)
-      fail("Exception has not thrown")
+      fail("Exception is not thrown")
     } catch {
       case e: IndexOutOfBoundsException => // success
     }
 
     try {
       board set ((6, 6), 12)
-      fail("Exception has not thrown")
+      fail("Exception is not thrown")
     } catch {
       case e: IndexOutOfBoundsException => // success
     }
 
     try {
       board set ((-3, 3), 13)
-      fail("Exception has not thrown")
+      fail("Exception is not thrown")
     } catch {
       case e: IndexOutOfBoundsException => // success
     }
@@ -160,7 +160,7 @@ class BoardTest {
     pieceBoard set ((1, 5), tower)
 
     val actualList = pieceBoard.toList
-      assertEquals(Set(stone1, stone2, tower), actualList.toSet)
+    assertEquals(Set(stone1, stone2, tower), actualList.toSet)
   }
 
   @Test
@@ -168,7 +168,21 @@ class BoardTest {
     val pieceBoard = new Board
 
     val actualList = pieceBoard.toList
-      assertEquals(Set[Piece](), actualList.toSet)
+    assertEquals(Set[Piece](), actualList.toSet)
+  }
+
+  @Test
+  def testIsOnBoard() {
+    assertTrue(board isOnBoard (0, 3))
+    assertTrue(board isOnBoard (5, 1))
+    assertTrue(board isOnBoard (3, 3))
+    assertTrue(board isOnBoard (6, 3))
+
+    assertFalse(board isOnBoard (5, 0))
+    assertFalse(board isOnBoard (6, 0))
+    assertFalse(board isOnBoard (0, 0))
+    assertFalse(board isOnBoard (-1, 3))
+    assertFalse(board isOnBoard (-3, -3))
   }
 
 }
