@@ -56,7 +56,19 @@ class GameControllerTest {
     gameController makeMove (move, tower)
 
     verify(logic) makeMove (move, tower)
-    verify(logic, times(4)) makeMove (anyObject(), anyObject())
+    verify(logic, times(3)) makeMove (anyObject(), anyObject())
+  }
+  
+  @Test 
+  def shouldNotMakeMovesAfterGameOver() {
+    val player = mock(classOf[Player])
+    when(logic.getCurrentPlayer).thenReturn(player)
+    when(logic.isGameOver).thenReturn(true)
+
+    val (move, tower) = ((1, 4), new Tower)
+    gameController makeMove (move, tower)
+
+    verify(logic, times(0)) makeMove (move, tower)    
   }
 
 }

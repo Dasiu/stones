@@ -73,5 +73,6 @@ class GenericBoard[T] {
 object GenericBoard {
   val HEIGHT = 7
   val WIDTH = 7
+  val SIZE = 37
 }
 

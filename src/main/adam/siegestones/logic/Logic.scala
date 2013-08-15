@@ -5,6 +5,7 @@ import adam.siegestones.models.Stone
 import adam.siegestones.models.Piece
 import adam.siegestones.models.Board
 import adam.siegestones.models.Tower
+import adam.siegestones.models.GenericBoard
 
 class Logic(
   private val board: Board) {
@@ -65,8 +66,18 @@ class Logic(
   }
   
   def isGameOver(): Boolean = {
-    //throw new UnsupportedOperationException
-    false
+	  val pieces = board.toList
+	  
+	  if (pieces.size == GenericBoard.SIZE) true
+	  else {
+	    val towersNumPerPlayer = players.map(pl => (pl, 
+	        pieces.count{
+	        	case tower: Tower => (tower.getOwner == pl)
+	        	case _ => false }))
+	        val maxTowersNum = towersNumPerPlayer map (_._2) max
+	        val playersWithMaxTowersNum = towersNumPerPlayer filter (_._2 == maxTowersNum)
+	    	(maxTowersNum >= Logic.TOWERS_NUM_TO_WIN && playersWithMaxTowersNum.size == 1)
+	  }
   }
 
   def getCurrentPlayer = players(currPlayerIdx)
@@ -79,4 +90,5 @@ class Logic(
 object Logic {
   val INITIAL_STONE_POWER = 6
   val TOWER_TAKEOVER_LIMIT = 4
+  val TOWERS_NUM_TO_WIN = 4
 }

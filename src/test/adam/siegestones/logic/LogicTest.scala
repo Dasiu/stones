@@ -9,6 +9,10 @@ import adam.siegestones.models.Player
 import adam.siegestones.models.Stone
 import adam.siegestones.models.Tower
 import adam.siegestones.models.Board
+import adam.siegestones.models.Piece
+import scala.collection.mutable.LinkedList
+import scala.collection.mutable.MutableList
+import adam.siegestones.models.GenericBoard
 
 class LogicTest {
   private var logic: Logic = null
@@ -199,7 +203,81 @@ class LogicTest {
   }
 
   @Test
-  def isGameOver {
-    fail("not implemented")
+  def isGameOverWhenPlayerHasMoreThan4Towers {
+    val winner = player1
+    val loser = player2
+    val pieces = createStonesAndTowers()
+    for (_ <- 1 to 2) { pieces += createTowerMock(winner) }
+
+    when(board.toList).thenReturn(pieces.toList)
+
+    assertTrue(logic.isGameOver)
   }
+
+  @Test
+  def isGameOverWhenBothPlayersHas4TowersOrMore {
+    val winner = player1
+    val loser = player2
+    val pieces = createStonesAndTowers()
+    for (_ <- 1 to 2) { pieces += createTowerMock(winner) }
+    pieces += createTowerMock(loser)
+
+    when(board.toList).thenReturn(pieces.toList)
+
+    assertTrue(logic.isGameOver)
+  }
+
+  @Test
+  def isGameOverWhenBoardIsFull {
+    val winner = player1
+    val loser = player2
+    val pieces = createStonesAndTowers()
+    for (_ <- pieces.size until GenericBoard.SIZE) { pieces += createStoneMock(loser) }
+    when(board.toList).thenReturn(pieces.toList)
+
+    assertTrue(logic.isGameOver)
+  }
+
+  @Test
+  def isGameOverWhenBothPlayersHas4Towers {
+    val winner = player1
+    val loser = player2
+    val pieces = createStonesAndTowers()
+    pieces += createTowerMock(winner)
+    pieces += createTowerMock(loser)
+
+    when(board.toList).thenReturn(pieces.toList)
+
+    assertFalse(logic.isGameOver)
+  }
+
+  @Test
+  def otherIsNotGameOverCases {
+    val pieces = createStonesAndTowers()
+
+    when(board.toList).thenReturn(List[Piece]())
+    assertFalse("Empty board", logic.isGameOver)
+
+    when(board.toList).thenReturn(pieces.toList)
+    assertFalse("Both players controls 3 towers", logic.isGameOver)
+  }
+
+  private def createStonesAndTowers() = {
+    val winner = player1
+    val loser = player2
+    val pieces = MutableList[Piece]()
+
+    for (_ <- 1 to 3) { pieces += createTowerMock(winner) }
+    for (_ <- 1 to 3) { pieces += createTowerMock(loser) }
+    for (_ <- 1 to 6) { pieces += createStoneMock(winner) }
+    for (_ <- 1 to 6) { pieces += createStoneMock(loser) }
+
+    pieces
+  }
+
+  private def createPieceMock[T <: Piece](pieceType: Class[T], owner: Player): T =
+    when(mock(pieceType).getOwner).thenReturn(owner).getMock()
+
+  private def createTowerMock(owner: Player) = createPieceMock(classOf[Tower], owner)
+  private def createStoneMock(owner: Player) = createPieceMock(classOf[Stone], owner)
 }
