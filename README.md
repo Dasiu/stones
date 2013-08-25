@@ -9,4 +9,5 @@ stones - simple game in Scala
 - it helps to code readability
 * same with makeMove method. Move it from logic to player.
 - code will be more natural, but might be more complicated.
+* board toList method should be replaced by getPieces.
 
