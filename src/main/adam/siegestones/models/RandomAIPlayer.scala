@@ -4,6 +4,9 @@ import java.util.Random
 import adam.siegestones.logic.Logic
 import scala.annotation.tailrec
 
+/**
+ * Simple AI, which returns random moves. In case game is over AI will be looping. 
+ */
 final class RandomAIPlayer(private val logic: Logic, private val generator: Random) extends AIPlayer(logic) {
   @tailrec override def nextMove(): ((Int, Int), Piece) = {
 	  val (x, y, pieceId) = drawMoveNumbers()

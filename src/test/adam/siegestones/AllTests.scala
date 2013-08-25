@@ -5,14 +5,15 @@ import org.junit.runners.Suite
 import adam.siegestones.logic.GameControllerTest
 import org.junit.runners.Suite.SuiteClasses
 import adam.siegestones.logic.LogicTest
-import adam.siegestones.models.AIPlayerTest
 import adam.siegestones.models.BoardTest
+import adam.siegestones.models.RandomAIPlayerTest
 
 @RunWith(classOf[Suite])
 @SuiteClasses(Array(classOf[GameControllerTest], 
-							classOf[LogicTest], 
-							classOf[AIPlayerTest],
-							classOf[BoardTest]))
+							classOf[LogicTest],
+							classOf[BoardTest],
+							classOf[RandomAIPlayerTest],
+							classOf[LogicTest]))
 class AllTests {
 
 }

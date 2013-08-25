@@ -2,30 +2,31 @@ package adam.siegestones.models;
 
 import java.util.Random
 
-import org.junit.Assert._
+import scala.annotation.tailrec
+
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Matchers._
-import org.mockito.Mockito._
+import org.mockito.Matchers.any
+import org.mockito.Matchers.anyObject
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.when
 
 import adam.siegestones.logic.Logic
 
-class AIPlayerTest {
+class RandomAIPlayerTest {
   private var generator: Random = null
   private var logic: Logic = null
 
   @Before
   def setUp {
-  }
-
-  private def setUpRandomAIPlayerTests() {
     generator = mock(classOf[Random])
     logic = mock(classOf[Logic])
   }
-
+  
   @Test
   def nextRandomMove {
-    setUpRandomAIPlayerTests()
     when(logic.isMoveLegal(anyObject(), anyObject())).thenReturn(true)
     when(generator.nextInt(any())).thenReturn(3)
     val aiPlayer = new RandomAIPlayer(logic, generator)
@@ -39,7 +40,6 @@ class AIPlayerTest {
 
   @Test
   def nextMoveMustBeLegal {
-    setUpRandomAIPlayerTests()
     val illegalMove = (0, 0)
     val legalMove = (1, 4)
     when(generator.nextInt(any())).thenReturn(0).thenReturn(0).thenReturn(11).thenReturn(1).thenReturn(4)
