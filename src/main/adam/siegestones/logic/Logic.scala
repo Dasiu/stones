@@ -9,7 +9,7 @@ import adam.siegestones.models.GenericBoard
 
 class Logic(
   private val board: Board) {
-  private var players = Array[Player]()
+  private var players: Array[_ <: Player] = Array[Player]()
   private var currPlayerIdx = 0
 
   def makeMove(p: (Int, Int), piece: Piece) {
@@ -84,7 +84,7 @@ class Logic(
   
   def getBoard = board
   
-  def setPlayers(pls: Array[Player]) { players = pls }
+  def setPlayers(pls: Array[_ <: Player]) { players = pls }
 }
 
 object Logic {
