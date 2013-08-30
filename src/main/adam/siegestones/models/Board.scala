@@ -1,15 +1,13 @@
 package adam.siegestones.models
 
 class Board extends GenericBoard[Piece] {
-  def neighbourTowers(p: (Int, Int)) = neighbours(p).
-    foldLeft(List[Tower]())((l: List[Tower], piece: Piece) => piece match {
-      case t: Tower => t :: l
-      case _ => l
-    }) toSet
+  def neighbourTowers(piece: (Int, Int)) = neighboursOfType[Tower](piece)
 
-  def neighbourStones(p: (Int, Int)) = neighbours(p).
-    foldLeft(List[Stone]())((l: List[Stone], piece: Piece) => piece match {
-      case t: Stone => t :: l
-      case _ => l
+  def neighbourStones(piece: (Int, Int)) = neighboursOfType[Stone](piece)
+
+  private def neighboursOfType[T <: Piece: Manifest](piece: (Int, Int)) = neighbours(piece).
+    foldLeft(List[T]())((list, piece) => piece match {
+      case element: T => element :: list
+      case _ => list
     }) toSet
 }
